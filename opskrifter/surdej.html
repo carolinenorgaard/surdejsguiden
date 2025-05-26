@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="da">
   <head>
     <meta charset="UTF-8" />
@@ -21,7 +21,7 @@
       href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="../style.css" />
 
     <!-- Tailwind -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -41,17 +41,17 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
     ></script>
-    <script src="/email.js"></script>
-    <script src="/burgerMenu.js"></script>
+    <script src="../email.js"></script>
+    <script src="../burgerMenu.js"></script>
   </head>
   <body class="font-josefin">
     <header class="bg-theme-color-2 sticky top-0 z-50">
       <div
         class="relative mx-auto flex max-w-6xl items-center justify-between p-4 sm:px-6"
       >
-        <a href="/" class="flex items-center gap-2 md:mb-0">
+        <a href="../index.html" class="flex items-center gap-2 md:mb-0">
           <img
-            src="/img/logo_2.png"
+            src="../img/logo_2.png"
             alt="Surdejsguiden logo"
             class="aspect-1/1 w-14 sm:w-16 md:w-20"
           />
@@ -67,21 +67,23 @@
           >
             <li>
               <a
-                href="/opskrifter/surdej.html"
+                href="../opskrifter/surdej.html"
                 class="hover:text-theme-color-3 text-theme-color-3"
                 >Lær at lave surdej</a
               >
             </li>
             <li>
-              <a href="/opskrifter/index.html" class="hover:text-theme-color-3"
+              <a
+                href="../opskrifter/index.html"
+                class="hover:text-theme-color-3"
                 >Opskrifter</a
               >
             </li>
             <li>
-              <a href="/om-os.html" class="hover:text-theme-color-3">Om os</a>
+              <a href="../om-os.html" class="hover:text-theme-color-3">Om os</a>
             </li>
             <li>
-              <a href="/kontakt.html" class="hover:text-theme-color-3"
+              <a href="../kontakt.html" class="hover:text-theme-color-3"
                 >Kontakt</a
               >
             </li>
@@ -98,40 +100,40 @@
         <h2 class="sr-only">Forskellige surdejsstartere</h2>
         <ul class="grid gap-4 text-lg sm:grid-cols-2 md:gap-10 md:text-xl">
           <li>
-            <a href="/opskrifter/rugsurdej.html">
+            <a href="../opskrifter/rugsurdej.html">
               <h3 class="mb-2 text-xl md:text-2xl">rugsurdej</h3>
               <img
-                src="/img/surdejsside/rugsurdej.png"
+                src="../img/surdejsside/rugsurdej.png"
                 alt="Mørkt rugbrød som illustrerer en opskrift på hvordan man laver en rugsurdej - velegnet til bagværk baseret på rugmel"
                 class="aspect-3/2 object-cover"
               />
             </a>
           </li>
           <li>
-            <a href="/opskrifter/hvedesurdej.html">
+            <a href="../opskrifter/hvedesurdej.html">
               <h3 class="mb-2 text-xl md:text-2xl">hvedesurdej</h3>
               <img
-                src="/img/surdejsside/hvedesurdej-1.png"
+                src="../img/surdejsside/hvedesurdej-1.png"
                 alt="Lyst brød som illustrerer en opskrift på hvordan man laver en hvedesurdej - velegnet til bagværk baseret på hvedemel"
                 class="aspect-3/2 object-cover"
               />
             </a>
           </li>
           <li>
-            <a href="/opskrifter/fuldkornssurdej.html">
+            <a href="../opskrifter/fuldkornssurdej.html">
               <h3 class="mb-2 text-xl md:text-2xl">fuldkornssurdej</h3>
               <img
-                src="/img/surdejsside/fuldkornssurdej.png"
+                src="../img/surdejsside/fuldkornssurdej.png"
                 alt="Fuldkornsbrød som illustrerer en opskrift på hvordan man laver en fuldkornssurdej - velegnet til bagværk baseret på fuldkornsmel"
                 class="aspect-3/2 object-cover"
               />
             </a>
           </li>
           <li>
-            <a href="/opskrifter/sødsurdej.html">
+            <a href="../opskrifter/sødsurdej.html">
               <h3 class="mb-2 text-xl md:text-2xl">sød surdej</h3>
               <img
-                src="/img/surdejsside/sødsurdej.png"
+                src="../img/surdejsside/sødsurdej.png"
                 alt="Jordbærtærte som illustrerer en opskrift på hvordan man laver en sød surdej - velegnet til forskelligt sødt bagværk og desserter"
                 class="aspect-3/2 object-cover"
               />
@@ -140,7 +142,7 @@
         </ul>
 
         <video
-          poster="/img/forside/video-billede.png"
+          poster="../img/forside/video-billede.png"
           controls
           class="aspect-5/6 object-cover"
         >
@@ -255,10 +257,7 @@
                 class="text-theme-color-1 placeholder:text-theme-color-1 w-full outline-none"
               />
               <button id="sendEmail" type="submit" class="w-4 cursor-pointer">
-                <img
-                  src="/img/svg/chevron_right.svg"
-                  alt="Tilmeld nyhedsbrev"
-                />
+                <img src="img/svg/chevron_right.svg" alt="Tilmeld nyhedsbrev" />
               </button>
             </div>
           </form>
@@ -271,22 +270,22 @@
               <li>
                 <a
                   class="hover:text-theme-color-3"
-                  href="/opskrifter/surdej.html"
+                  href="../opskrifter/surdej.html"
                   >Lær at lave surdej</a
                 >
               </li>
               <li>
-                <a href="/opskrifter.html" class="hover:text-theme-color-3"
+                <a href="../opskrifter.html" class="hover:text-theme-color-3"
                   >Opskrifter
                 </a>
               </li>
               <li>
-                <a href="/om-os.html" class="hover:text-theme-color-3"
+                <a href="../om-os.html" class="hover:text-theme-color-3"
                   >Om os
                 </a>
               </li>
               <li>
-                <a href="/kontakt.html" class="hover:text-theme-color-3"
+                <a href="../kontakt.html" class="hover:text-theme-color-3"
                   >kontakt</a
                 >
               </li>
