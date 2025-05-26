@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surdejsguiden</title>
+    <meta
+      name="description"
+      content="Lær at lave din egen surdej med nemme opskrifter, tips og trin-for-trin guider. Surdejsguiden hjælper dig med at bage bedre med surdej."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <!-- Swiper JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css"
+    />
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"
+    ></script>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-theme-color-1: #61412a;
+        --color-theme-color-2: #ded9cb;
+        --color-theme-color-3: #bea89e;
+        --color-theme-color-4: #f2eee8;
+        --color-theme-color-5: #fbfaf9;
+        /* Font family */
+        --font-josefin: "Josefin Slab", serif;
+      }
+    </style>
+    <!-- Email-Js -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script src="/email.js"></script>
+    <script src="/burgerMenu.js"></script>
+  </head>
+  <body class="font-josefin">
+    <header class="bg-theme-color-2 sticky top-0 z-50">
+      <div
+        class="relative mx-auto flex max-w-6xl items-center justify-between p-4 sm:px-6"
+      >
+        <a href="/" class="flex items-center gap-2 md:mb-0">
+          <img
+            src="/img/logo_ny.webp"
+            alt="Surdejsguiden logo"
+            class="aspect-1/1 w-14 sm:w-16 md:w-20"
+          />
+          <span class="text-4xl">Surdejsguiden</span>
+        </a>
+
+        <nav
+          id="menuLinks"
+          class="bg-theme-color-2 absolute top-full left-0 hidden w-full p-4 shadow sm:px-6 md:static md:block md:w-auto md:p-0 md:shadow-none"
+        >
+          <ul
+            class="flex flex-col items-end gap-5 text-lg md:flex-row md:text-xl lg:text-3xl"
+          >
+            <li>
+              <a
+                href="/opskrifter/surdej.html"
+                class="hover:text-theme-color-3"
+              >
+                Lær at lave surdej</a
+              >
+            </li>
+            <li>
+              <a href="/opskrifter/index.html" class="hover:text-theme-color-3">
+                Opskrifter</a
+              >
+            </li>
+            <li>
+              <a href="/om-os.html" class="hover:text-theme-color-3">Om os</a>
+            </li>
+            <li>
+              <a href="/kontakt.html" class="hover:text-theme-color-3">
+                Kontakt</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <button id="menuButton" class="cursor-pointer text-2xl md:hidden">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </header>
+    <main class="bg-theme-color-5">
+      <section class="grid">
+        <img
+          src="/img/forside/hero-billede-redigeret.png"
+          alt="Surdej opskrift og guide - hero billede"
+          class="h-[400px] w-full object-cover [grid-area:1/1] md:h-[600px]"
+        />
+
+        <div class="bg-black/30 [grid-area:1/1]"></div>
+
+        <div
+          class="mx-auto grid w-full max-w-6xl content-end p-4 pb-20 [grid-area:1/1] sm:px-6"
+        >
+          <div>
+            <!-- Wrapper needed so the grid container doesn't interfere with the h1's inline-block (make it a grid-item) underline effect -->
+            <h1
+              class="!text-theme-color-3 after:bg-theme-color-3 relative inline-block text-4xl after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-[105%] after:content-['']"
+            >
+              Lær at lave surdej
+            </h1>
+
+            <p class="text-theme-color-3 text-3xl">
+              med vores nemme opskrifter
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <!-- Grid: tekst og billede -->
+        <div class="grid gap-10 text-lg md:grid-cols-2 md:text-xl">
+          <!-- Tekstkolonne -->
+          <div class="space-y-4">
+            <h2 class="mb-8 text-2xl md:text-3xl">
+              Velkommen til Surdejsguiden
+            </h2>
+            <p>
+              Vil du lære at lave din egen surdej fra bunden? Så er du landet
+              det rette sted. På Surdejsguiden guider vi dig gennem hvert trin -
+              fra de første bobler til en stærk, bageklar surdej.
+            </p>
+            <p>
+              Vi viser, hvordan du holder den sund og undgår typiske
+              begynderfejl.
+            </p>
+            <p>
+              Når surdejen er klar, kan du gå på opdagelse i vores opskrifter på
+              brød, boller og andre lækkerier med surdej i centrum.
+            </p>
+            <p>
+              Uanset om du er ny eller vil blive bedre, finder du inspiration og
+              viden her.
+            </p>
+            <p>Lad os starte surdejen sammen!</p>
+          </div>
+
+          <!-- Højre kolonne: billede -->
+          <img
+            src="/img/forside/velkommen-billede-3.png"
+            class="aspect-4/3 object-cover"
+            alt="Billede af personer bag Surdejsguiden"
+          />
+        </div>
+      </section>
+
+      <section
+        class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-2"
+      >
+        <!-- Venstre kolonne: video -->
+
+        <video
+          poster="img/forside/video-billede.png"
+          controls
+          class="aspect-5/6 object-cover"
+        >
+          <source src="SURDEJS3.mp4" type="video/mp4" />
+        </video>
+
+        <!-- Højere kolonne: Tekst -->
+        <div class="space-y-4 text-lg md:text-xl">
+          <h2 class="mb-8 text-2xl capitalize md:text-3xl">
+            Surdejens historie
+          </h2>
+          <p>
+            Surdej stammer fra Det Gamle Egypten og blev brugt længe før gær.
+            Den består af mælkesyrebakterier og vilde gærceller fra melet og
+            holdes i live med mel og vand.
+          </p>
+          <p>
+            I årtusinder har man bagt med surdej i Middelhavet - fra oldtidens
+            Grækenland og Rom til nutidens Marokko og Italien. Også i Danmark er
+            surdej igen populært.
+          </p>
+          <p>
+            Surdej giver brød med længere holdbarhed, mere smag og bedre
+            fordøjelighed. Det er både tradition og håndværk - og noget, der
+            bringer folk sammen.
+          </p>
+          <a
+            href="/opskrifter/surdej.html"
+            class="hover:text-theme-color-3 hover:after:bg-theme-color-3 relative inline-block text-xl duration-200 after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-[105%] after:translate-y-2 after:bg-black after:transition-colors after:content-[''] md:text-2xl"
+          >
+            Lær at lave din egen surdej
+          </a>
+        </div>
+      </section>
+
+      <section class="bg-theme-color-4 overflow-hidden">
+        <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <h2 class="mb-12 text-2xl md:text-3xl">Opskrifter med surdej</h2>
+          <div class="relative">
+            <button
+              class="swiper-button-prev-unique hover:text-theme-color-3 absolute top-1/2 -left-5 hidden -translate-y-1/2 cursor-pointer text-2xl md:inline xl:-left-10"
+            >
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="swiper mySwiper">
+              <ul class="swiper-wrapper text-lg md:text-xl" id="swiper-wrapper">
+                <li class="swiper-slide">
+                  <a href="/opskrifter/surdejsbrød.html" class="group">
+                    <img
+                      src="/img/forside/carousel-surdejsbrød.png"
+                      alt="Surdejsbrød med sprød skorpe"
+                      class="aspect-3/4 object-cover"
+                    />
+                    <h3
+                      class="group-hover:text-theme-color-3 group-hover:after:bg-theme-color-3 mt-2 text-center duration-200"
+                    >
+                      surdejsbrød
+                    </h3>
+                  </a>
+                </li>
+
+                <li class="swiper-slide">
+                  <a href="/opskrifter/surdejsrugbrød.html" class="group">
+                    <img
+                      src="/img/forside/carousel-rugbrød.png"
+                      alt="Mørkt surdejsrugbrød"
+                      class="aspect-3/4 object-cover"
+                    />
+                    <h3
+                      class="group-hover:text-theme-color-3 group-hover:after:bg-theme-color-3 mt-2 text-center duration-200"
+                    >
+                      surdejsrugbrød
+                    </h3>
+                  </a>
+                </li>
+
+                <!-- Duplicate entries, can be removed or kept if intentional -->
+                <li class="swiper-slide">
+                  <a href="/opskrifter/surdejsboller.html" class="group">
+                    <img
+                      src="/img/forside/carousel-boller.png"
+                      alt="Luftige surdejsboller med sprød overflade"
+                      class="aspect-3/4 object-cover"
+                    />
+                    <h3
+                      class="group-hover:text-theme-color-3 group-hover:after:bg-theme-color-3 mt-2 text-center duration-200"
+                    >
+                      surdejsboller
+                    </h3>
+                  </a>
+                </li>
+                <li class="swiper-slide">
+                  <a href="/opskrifter/surdejskanelsnurrer.html" class="group">
+                    <img
+                      src="/img/forside/carousel-kanelsnurre.png"
+                      alt="Surdejskanelsnurrer med kanel og sukker"
+                      class="aspect-3/4 object-cover"
+                    />
+                    <h3
+                      class="group-hover:text-theme-color-3 group-hover:after:bg-theme-color-3 mt-2 text-center duration-200"
+                    >
+                      kanelsnurrer
+                    </h3>
+                  </a>
+                </li>
+                <li class="swiper-slide">
+                  <a href="/opskrifter/surdejsbrownie.html" class="group">
+                    <img
+                      src="/img/forside/carousel-brownie.png"
+                      alt="Surdejsbrownie med mørk chokolade"
+                      class="aspect-3/4 object-cover"
+                    />
+                    <h3
+                      class="group-hover:text-theme-color-3 group-hover:after:bg-theme-color-3 mt-2 text-center duration-200"
+                    >
+                      surdejsbrownie
+                    </h3>
+                  </a>
+                </li>
+                <li class="swiper-slide">
+                  <a href="/opskrifter/surdej.html" class="group">
+                    <img
+                      src="/img/forside/carousel-surdej.png"
+                      alt="Et glas med surdej i"
+                      class="aspect-3/4 object-cover"
+                    />
+                    <h3
+                      class="group-hover:text-theme-color-3 group-hover:after:bg-theme-color-3 mt-2 text-center duration-200"
+                    >
+                      surdej
+                    </h3>
+                  </a>
+                </li>
+              </ul>
+              <!-- <div class="swiper-pagination"></div> -->
+            </div>
+            <button
+              class="swiper-button-next-unique hover:text-theme-color-3 absolute top-1/2 -right-5 hidden -translate-y-1/2 cursor-pointer text-2xl md:inline xl:-right-10"
+            >
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-theme-color-2 text-lg md:text-xl">
+      <h2 class="sr-only">Kontaktinformation</h2>
+      <div
+        class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-4 md:gap-4"
+      >
+        <div class="flex flex-col justify-between gap-4 md:col-span-2">
+          <div>
+            <h3 class="mb-4 text-xl font-semibold uppercase md:text-2xl">
+              Nyhedsbrev
+            </h3>
+            <p class="first-letter">
+              Tilmeld dig vores nyhedsbrev og få en mail, når vi har nye
+              opskrifter klar
+            </p>
+          </div>
+
+          <form id="emailForm" class="items-center gap-2">
+            <div
+              class="flex w-[60%] items-center justify-between border-b-1 pb-2"
+            >
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="E-mail"
+                class="text-theme-color-1 placeholder:text-theme-color-1 w-full outline-none"
+              />
+              <button id="sendEmail" type="submit" class="w-4 cursor-pointer">
+                <img
+                  src="/img/svg/chevron_right.svg"
+                  alt="Tilmeld nyhedsbrev"
+                />
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <h3 class="sr-only">Links</h3>
+          <nav>
+            <ul>
+              <li>
+                <a
+                  class="hover:text-theme-color-3"
+                  href="/opskrifter/surdej.html"
+                  >Lær at lave surdej</a
+                >
+              </li>
+              <li>
+                <a href="/opskrifter.html" class="hover:text-theme-color-3"
+                  >Opskrifter
+                </a>
+              </li>
+              <li>
+                <a href="/om-os.html" class="hover:text-theme-color-3"
+                  >Om os
+                </a>
+              </li>
+              <li>
+                <a href="/kontakt.html" class="hover:text-theme-color-3"
+                  >kontakt</a
+                >
+              </li>
+              <!-- <li>
+              <a href="#" class="hover:text-theme-color-3">Instagram</a>
+            </li>
+            <li><a href="#" class="hover:text-theme-color-3">Facebook</a></li> -->
+            </ul>
+          </nav>
+        </div>
+
+        <div>
+          <h3 class="sr-only">Adresse</h3>
+          <address class="not-italic md:text-right">
+            <p>Surdejsguiden</p>
+            <p>Adresse: Surdejsvej 1</p>
+            <p>Postnummer: 1234</p>
+            <p>By: Surdejsby</p>
+            <p>CVR: 12345678</p>
+          </address>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const swiper = new Swiper(".mySwiper", {
+          slidesPerView: 4,
+          spaceBetween: 20,
+          // Fjen næste linje hvis du vil have at billederne skal være hele
+          centeredSlides: false,
+          loop: true,
+          speed: 1000,
+          autoplay: {
+            delay: 2500,
+            disableOnInteraction: true,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next-unique",
+            prevEl: ".swiper-button-prev-unique",
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

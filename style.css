@@ -1,0 +1,51 @@
+/* Da vi bruger Tailwind CSS via et CDN, behøver vi ikke at nulstille vores standard CSS.
+Det er også derfor, vi ikke kan have vores Tailwind-variabler her i style.css,
+ men skal inkludere dem i en <style type="text/tailwindcss"> blok. */
+
+.first-letter:first-letter,
+h1:first-letter,
+h2:first-letter,
+h3:first-letter,
+h4:first-letter,
+h5:first-letter,
+h6:first-letter,
+/* Target li instead of a tags because :first-letter only affects block elements, not inline elements */
+nav li:first-letter,
+address *:first-letter {
+  text-transform: uppercase;
+}
+
+/* Apply theme color #61412a to all heading elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header {
+  color: #61412a;
+}
+
+/* Animation for the bouncing effect */
+.animation:hover > i {
+  display: inline-block;
+  animation: simpleMove 1s infinite;
+}
+
+@keyframes simpleMove {
+  0%,
+  100% {
+    transform: none;
+    /* animation-timing-function: cubic-bezier(0, 0, 0.2, 1); */
+  }
+  50% {
+    transform: translateX(-25%);
+    /* animation-timing-function: cubic-bezier(0.8, 0, 1, 1); */
+  }
+}
+
+/* Remove the default background color of input fields when autofilled */
+input:-webkit-autofill {
+  background-color: transparent !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
