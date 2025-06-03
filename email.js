@@ -8,7 +8,7 @@ function sendEmail() {
 
   // Try to send the email
   emailjs
-    .send("service_5yh9czr", "template_73ixwys", {
+    .send("service_ovb2eud", "template_73ixwys", {
       email: document.getElementById("email").value,
       name: "Nye medlem",
     })
@@ -37,7 +37,7 @@ function sendForm() {
 
   // Try to send the form data
   emailjs
-    .send("service_5yh9czr", "template_t8e69yo", {
+    .send("service_ovb2eud", "template_t8e69yo", {
       firstName: document.getElementById("firstName").value,
       lastName: document.getElementById("lastName").value,
       phone: document.getElementById("phone").value,
