@@ -1,15 +1,25 @@
+<!-- Dette erklærer dokumentet som et HTML5-dokument. Det fortæller browseren, hvilken version af HTML der bruges -->
 <!DOCTYPE html>
+<!-- Starter HTML-dokumentet og angiver sproget som dansk -->
 <html lang="da">
+  <!-- Dette er dokumentets hovedsektion, der indeholder metadata og links til eksterne filer, som browseren skal indlæse, før den viser noget på siden -->
   <head>
+    <!-- Angiver tegnkodningen for dokumentet som UTF-8, (sikrer, at danske specialtegn som æ, ø og å vises korrekt) -->
     <meta charset="UTF-8" />
+    <!-- Gør siden responsiv, så den ser godt ud på både mobil og desktop - altså tilpasser sig forskellige skærmstørrelser -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Surdejsguiden, er den titel der vises i fanen øverst i browseren, når man besøger siden og i søgeresultater -->
     <title>Surdejsguiden - Surdejsbrownie</title>
+    <!--  En beskrivelse af hjemmesiden, som vises i Google og bruges til SEO (søgemaskineoptimering) -->
     <meta
       name="description"
       content="Bag saftige surdejsbrownies med vores lækre opskrift – nem trin-for-trin guide med ingredienser, surdej og bagetips."
     />
+    <!-- Hjælper browseren med at forbinde hurtigere til Googles font-tjeneste - gør at skrifttyperne loader hurtigere -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!--  Importerer Font Awesome – et stort bibliotek af ikoner, f.eks. til knapper, navigation osv -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -17,13 +27,18 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!--  Importerer skrifttypen Josefin Slab fra Google Fonts – bruges til design og typografi -->
     <link
       href="https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../style.css" />
-    <!-- Tailwind -->
+    <!-- Link til din egen CSS-fil (stylesheet), hvor du har din egen styling -->
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- Importerer Tailwind CSS direkte fra et CDN, et moderne utility-first-baseret design-CSS-framework, der bruges til at style HTML direkte med små genbrugelige CSS-klasser -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!--  Her defineres egne farver og skrifttyper som CSS-variabler med Tailwind's @theme – det gør det nemt at bruge dem på hele siden. Det gør, at man kan bruge fx bg-theme-color-2 i HTML’en -->
     <style type="text/tailwindcss">
       @theme {
         --color-theme-color-1: #61412a;
@@ -36,34 +51,99 @@
       }
     </style>
     <!-- Email-Js -->
+    <!-- Dette script importerer EmailJS-biblioteket, en tjeneste der gør det muligt at sende emails direkte fra JavaScript uden at skulle bruge en server -  bruges til at sende emails direkte fra hjemmesiden uden backend-->
     <script
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
     ></script>
+    <!-- Tilføjer dine egne JavaScript-filer, der håndterer email-formularen og sender emails via EmailJS  -->
+    <!-- (email.js) håndterer/sender kontaktformular eller mail -->
+    <!-- (burgerMenu.js) håndterer burger-menuen, så den kan åbnes og lukkes på mobile enheder -->
     <script src="../email.js"></script>
     <script src="../burgerMenu.js"></script>
   </head>
+  <!-- "body" Dette starter selve indholdet på siden - Her starter HTML'en, der udgør din hjemmeside -->
+  <!-- klassen (font-josefin) gør at hele siden bruger den valgte skrifttype -->
   <body class="font-josefin">
+    <!-- Laver en sticky header (fast topmenu), der altid bliver øverst -->
+    <!-- bg-theme-color-2: er baggrundsfarven -->
+    <!-- sticky: gør at headeren forbliver på toppen, når man scroller -->
+    <!-- top-0: placerer headeren i toppen af siden -->
+    <!-- z-50: lægger den foran andre elementer (lag-prioritet) -->
     <header class="bg-theme-color-2 sticky top-0 z-50">
+      <!-- "div" er en container der centrerer indholdet, giver det en maksimal bredde, og bruger flexbox til at placere logo og tekst side om side - Wrapper omkring indholdet i headeren -->
+      <!-- relative: gør at menuen kan positioneres i forhold til headeren -->
+      <!-- mx-auto: centrerer det horisontalt -->
+      <!-- flex: aktiverer flexbox-layout -->
+      <!-- max-w-6xl: maks bredde for at indholdet ikke bliver for bredt på store skærme -->
+      <!-- items-center: centrerer indholdet vertikalt -->
+      <!-- justify-between: skubber elementer til hver sin side (logo til venstre, menu til højre) -->
+      <!-- p-4: padding hele vejen rundt -->
       <div
         class="relative mx-auto flex max-w-6xl items-center justify-between p-4"
       >
+        <!-- Klikbart logo med tekst, der linker til forsiden (index.html) -->
+        <!-- flex: så billedet og teksten står ved siden af hinanden -->
+        <!-- items-center: centrerer vertikalt -->
+        <!-- gap-2: afstand mellem logo og tekst -->
+        <!-- md:mb-0: nul margin-bottom på mellemstore skærme og op -->
         <a href="../index.html" class="flex items-center gap-2 md:mb-0">
+          <!-- Logoet - et billede, der repræsenterer Surdejsguiden -->
+          <!-- src: stien til billedet, der bruges som logo -->
+          <!-- alt: alternativ tekst, der beskriver billedet for skærmlæsere -->
+          <!-- aspect-1/1: gør at billedet har et 1:1 aspektforhold (kvadratisk) -->
+          <!-- w-14: bredde på 3.5 rem (56px) på mobil -->
+          <!-- sm:w-16: bredde på 4 rem (64px) på små skærme -->
+          <!-- md:w-20: bredde på 5 rem (80px) på mellemstore skærme og op -->
           <img
             src="../img/logo.webp"
             alt="Surdejsguiden logo"
             class="aspect-1/1 w-14 sm:w-16 md:w-20"
           />
+          <!-- Teksten "Surdejsguiden" ved siden af logoet -->
+          <!-- <span> er et inline HTML-element, som bruges til at gruppere eller style en del af teksten, uden at påvirke layoutet omkring det - det har ingen default styling — men bruges typisk sammen med klasser -->
+          <!-- text-4xl: ekstra stor tekststørrelse -->
           <span class="text-4xl">Surdejsguiden</span>
         </a>
 
+        <!-- Navigationen (menuen) - Navigationselement med ID'et "menuLinks", som bruges i JavaScript til at styre mobilmenuen (åbne/lukke burger-menu)-->
+        <!-- "nav" er et semantisk HTML-element, der bruges til at definere en navigationssektion på siden -->
+        <!-- id="menuLinks": bruges til at tilgå/åbne/lukke menuen med JavaScript -->
+        <!-- bg-theme-color-2: giver samme baggrundsfarve som resten af headeren -->
+        <!-- absolute: gør at menuen vises under headeren, når den er åben (på mobil) - positionerer menuen absolut (i forhold til nærmeste relative forælder) – bruges til mobilvisning -->
+        <!-- top-full og left-0: placerer menuen lige under headeren (helt til venstre) -->
+        <!-- hidden: skjuler menuen som udgangspunkt (vises via JavaScript, når man klikker på burger-ikonet) -->
+        <!-- w-full: fylder hele bredden af skærmen -->
+        <!-- p-4: indvendig afstand (padding) hele vejen rundt -->
+        <!-- shadow: tilføjer skyggeeffekt, som gør menuen tydeligere på mobil -->
+        <!-- sm:px-6: ekstra vandret padding på små skærme -->
+        <!-- md:static: gør menuen statisk igen på større skærme - position fra medium skærmstørrelser og op (desktop) – så den opfører sig som almindelig menu -->
+        <!-- md:block: vises som blok (synlig) på større skærme -->
+        <!-- md:w-auto: bredde tilpasses indholdet - bredde automatisk baseret på indhold på større skærme -->
+        <!-- md:p-0: nulstiller/fjerner padding på større skærme -->
+        <!-- md:shadow-none: fjerner skyggeeffekt på større skærme -->
         <nav
           id="menuLinks"
           class="bg-theme-color-2 absolute top-full left-0 hidden w-full p-4 shadow sm:px-6 md:static md:block md:w-auto md:p-0 md:shadow-none"
         >
+          <!-- Navigationselementer (links) - en liste over links til forskellige sider på hjemmesiden - liste over navigationslinks -->
+          <!-- ul: er en uordnet liste, der bruges til at gruppere navigationselementerne -->
+          <!-- flex: gør listen til flex-container -  aktiverer fleksibel layoutvisning-->
+          <!-- flex-col: viser menupunkterne som kolonne (under hinanden) på mobil - kolonne-retning (på mobil) -->
+          <!-- items-end: justerer indholdet til højre (mobil) -  højrejusterer menupunkterne på mobil-->
+          <!-- gap-5: afstand mellem hvert punkt - afstand mellem menupunkterne -->
+          <!-- text-lg: skriftstørrelse på mobil - gør teksten større (gælder på mobil og op) -->
+          <!-- md:flex-row: viser menupunkterne vandret (rækkevis) fra medium skærm og op -skifter til række-retning på større skærme -->
+          <!-- md:text-xl, lg:text-3xl: gør teksten større på mellemstore og store skærme -->
+          <!-- lg:text-3xl: gør teksten endnu større på store skærme -->
           <ul
             class="flex flex-col items-end gap-5 text-lg md:flex-row md:text-xl lg:text-3xl"
           >
+            <!-- Link til side med guide til at lave surdej -->
+            <!-- li: er et listeelement, der indeholder hvert menupunkt -->
+            <!-- a: er et hyperlink, der fører til en anden side -->
+            <!-- href: angiver URL'en, som linket fører til -->
+            <!-- hover:text-theme-color-3: ændrer farven på teksten, når musen holdes over linket (hovereffekt) -->
             <li>
               <a
                 href="../opskrifter/surdej.html"
@@ -71,6 +151,11 @@
                 >Lær at lave surdej</a
               >
             </li>
+            <!-- Link til en side med opskrifter, hvor brugere kan finde forskellige opskrifter med surdej -->
+            <!-- li: er et listeelement, der indeholder hvert menupunkt -->
+            <!-- a: er et hyperlink, der fører til en anden side -->
+            <!-- href: angiver URL'en, som linket fører til -->
+            <!-- hover:text-theme-color-3: ændrer farven på teksten, når musen holdes over linket (hovereffekt) -->
             <li>
               <a
                 href="../opskrifter/index.html"
@@ -78,9 +163,19 @@
                 >Opskrifter</a
               >
             </li>
+            <!-- Link til en side med information om bag Surdejsguiden og teamet/personerne -->
+            <!-- li: er et listeelement, der indeholder hvert menupunkt -->
+            <!-- a: er et hyperlink, der fører til en anden side -->
+            <!-- href: angiver URL'en, som linket fører til -->
+            <!-- hover:text-theme-color-3: ændrer farven på teksten, når musen holdes over linket (hovereffekt) -->
             <li>
               <a href="../om-os.html" class="hover:text-theme-color-3">Om os</a>
             </li>
+            <!-- Link til kontaktsiden, hvor brugere fx kan skrive en besked -->
+            <!-- li: er et listeelement, der indeholder hvert menupunkt -->
+            <!-- a: er et hyperlink, der fører til en anden side -->
+            <!-- href: angiver URL'en, som linket fører til -->
+            <!-- hover:text-theme-color-3: ændrer farven på teksten, når musen holdes over linket (hovereffekt) -->
             <li>
               <a href="../kontakt.html" class="hover:text-theme-color-3"
                 >Kontakt</a
@@ -88,25 +183,88 @@
             </li>
           </ul>
         </nav>
+        <!-- Burger-menu knap: til mobilvisning - bruges til at åbne/lukke menuen på mobile enheder -->
+        <!-- id="menuButton": bruges i JavaScript til at åbne/lukke menuen -->
+        <!-- cursor-pointer: ændrer musemarkøren til en hånd, når den svæver over knappen -->
+        <!-- text-2xl: gør ikonet større på mobil -->
+        <!-- md:hidden: skjuler knappen på mellemstore skærme og op (kun synlig på mobil) -->
         <button id="menuButton" class="cursor-pointer text-2xl md:hidden">
+          <!-- Font Awesome ikon for burger-menuen (tre vandrette streger) -->
+          <!-- fa-solid: angiver at det er et solidt ikon fra Font Awesome -->
+          <!-- fa-bars: er navnet på ikonet, der repræsenterer en burger-menu -->
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
     </header>
+
+    <!-- Hovedindholdet på siden - her starter det primære indhold, der vises på siden -->
+    <!-- bg-theme-color-5: baggrundsfarven for hovedindholdet -->
     <main class="bg-theme-color-5">
+      <!-- sektion for navigation tilbage til opskrifter -->
+      <!-- div: en container for indholdet -->
+      <!-- mx-auto: centrerer indholdet horisontalt -->
+      <!-- max-w-6xl: maks bredde for at indholdet ikke bliver for bredt på store skærme -->
+      <!-- p-4: padding hele vejen rundt -->
+      <!-- sm:p-6: ekstra padding på små skærme -->
+      <!-- sm:pt-12: ekstra padding i toppen på små skærme -->
       <div class="mx-auto max-w-6xl p-4 sm:p-6 sm:pt-12">
+        <!-- Overskrift for opskriften -->
+        <!-- href: angiver URL'en, som linket fører til -->
+        <!-- animation: tilføjer en animationsklasse til linket -->
+        <!-- mb-8: margin-bottom på 2 rem (32px) -->
+        <!-- block: gør linket til et blok-element, så det fylder hele linjen -->
+        <!-- text-lg: skriftstørrelse på 1.125 rem (18px) -->
+        <!-- md:text-xl: større skriftstørrelse på mellemstore skærme (1.25 rem eller 20px) -->
         <a
           href="../opskrifter/index.html"
           class="animation mb-8 block text-lg md:text-xl"
         >
+          <!-- Font Awesome ikon for tilbage-knap -->
+          <!-- i: er et ikon-element fra Font Awesome -->
+          <!-- fa-solid: angiver at det er et solidt ikon fra Font Awesome -->
+          <!-- fa-chevron-left: er navnet på ikonet, der repræsenterer en pil til venstre -->
+          <!-- Tilbage til opskrifter: tekst der vises ved siden af ikonet -->
+          <!-- Dette link fører brugeren tilbage til opskriftsoversigten -->
           <i class="fa-solid fa-chevron-left"></i> Tilbage til opskrifter</a
         >
       </div>
+      <!-- Hovedindholdet for opskriften - indeholder opskriftens titel, ingredienser og fremgangsmåde -->
+      <!-- article: er et semantisk HTML-element, der bruges til at definere en selvstændig sektion af indhold -->
+      <!-- mx-auto: centrerer indholdet horisontalt -->
+      <!-- max-w-6xl: maks bredde for at indholdet ikke bliver for bredt på store skærme -->
+      <!-- space-y-8: giver afstand mellem elementerne i artiklen (8 = 2 rem eller 32px) -->
+      <!-- px-4: padding på siderne (1 rem eller 16px) -->
+      <!-- pb-14: padding i bunden (3.5 rem eller 56px) -->
+      <!-- sm:px-6: ekstra padding på små skærme (1.5 rem eller 24px) -->
+      <!-- Dette sikrer, at artiklen er læsevenlig og har god afstand mellem elementerne -->
       <article class="mx-auto max-w-6xl space-y-8 px-4 pb-14 sm:px-6">
+        <!-- Titel for opskriften -->
+        <!-- h1: er et overskriftselement, der bruges til at definere den vigtigste overskrift på siden -->
+        <!-- text-2xl: skriftstørrelse på 1.5 rem (24px) -->
+        <!-- md:text-3xl: større skriftstørrelse på mellemstore skærme (1.875 rem eller 30px) -->
+        <!-- Dette er opskriftens titel, der vises øverst på siden -->
         <h1 class="text-2xl md:text-3xl">Surdejsbrownie</h1>
 
+        <!-- Beskrivelse af opskriften -->
+        <!-- div: en container for indholdet -->
+        <!-- bg-theme-color-4: baggrundsfarven for beskrivelsen -->
+        <!-- p-4: padding hele vejen rundt (1 rem eller 16px) -->
+        <!-- md:p-14: ekstra padding på mellemstore skærme (3.5 rem eller 56px) -->
         <div class="bg-theme-color-4 p-4 md:p-14">
+          <!-- overskrift for ingredienser -->
+          <!-- h3: er et overskriftselement, der bruges til at definere en underoverskrift -->
+          <!-- mb-6: margin-bottom på 1.5 rem (24px) -->
+          <!-- text-2xl: skriftstørrelse på 1.5 rem (24px) -->
+          <!-- md:text-3xl: større skriftstørrelse på mellemstore skærme (1.875 rem eller 30px) -->
           <h3 class="mb-6 text-2xl md:text-3xl">Ingredienser</h3>
+          <!-- Liste over ingredienser til opskriften -->
+          <!-- ul: er en uordnet liste, der bruges til at gruppere ingredienserne -->
+          <!-- list-inside: gør at punkttegnene vises inden for listen (ikke udenfor) -->
+          <!-- list-disc: bruger disk-punkttegn (runde prikker) til at markere hvert punkt -->
+          <!-- space-y-4: giver afstand mellem hvert punkt i listen (1 rem eller 16px) -->
+          <!-- text-lg: skriftstørrelse på 1.125 rem (18px) -->
+          <!-- md:text-xl: større skriftstørrelse på mellemstore skærme (1.25 rem eller 20px) -->
+          <!-- Denne liste indeholder alle ingredienserne, der skal bruges til at lave surdejsjordbærtærten -->
           <ul class="list-inside list-disc space-y-4 text-lg md:text-xl">
             <li>100 g chokolade, mindst et kakaoindhold på 54%</li>
             <li>80 g smør</li>
@@ -120,13 +278,36 @@
           </ul>
         </div>
 
+        <!-- Billede af surdejsbrownien -->
+        <!-- img: HTML-element til at vise billeder -->
+        <!-- src: stien til billedet, der skal vises -->
+        <!-- alt: alternativ tekst, der beskriver billedet for skærmlæsere og hvis billedet ikke kan indlæses -->
         <img
           src="../img/opskrifter/brownie.png"
           alt="Et friskbagt surdejsbrød med sprød, gylden skorpe ligger på et stribet viskestykke ovenpå et skærebræt i træ."
         />
-
+        <!-- Fremgangsmåde for opskriften -->
+        <!-- div: en container for indholdet -->
+        <!-- bg-theme-color-4: baggrundsfarven for fremgangsmåden -->
+        <!-- p-4: padding hele vejen rundt (1 rem eller 16px) -->
+        <!-- md:p-14: ekstra padding på mellemstore skærme (3.5 rem eller 56px) -->
         <div class="bg-theme-color-4 p-4 md:p-14">
+          <!-- overskrift for fremgangsmåde -->
+          <!-- h3: er et overskriftselement, der bruges til at definere en underoverskrift -->
+          <!-- mb-6: margin-bottom på 1.5 rem (24px) -->
+          <!-- text-2xl: skriftstørrelse på 1.5 rem (24px) -->
+          <!-- md:text-3xl: større skriftstørrelse på mellemstore skærme (1.875 rem eller 30px) -->
           <h3 class="mb-6 text-2xl md:text-3xl">Fremgangsmåde</h3>
+          <!-- Liste over trin i fremgangsmåden -->
+          <!-- ol: er en ordnet liste, der bruges til at gruppere trin i fremgangsmåden -->
+          <!-- list-inside: gør at tallet vises inden for listen (ikke udenfor) -->
+          <!-- list-decimal: bruger tal (1, 2, 3 osv.) til at markere hvert trin -->
+          <!-- space-y-10: giver stor afstand mellem hvert trin i listen (2.5 rem eller 40px) -->
+          <!-- text-lg: skriftstørrelse på 1.125 rem (18px) -->
+          <!-- marker:block: gør at nummereringen vises som blok-elementer (hver trin starter på en ny linje) -->
+          <!-- marker:text-2xl: gør tallet større (1.5 rem eller 24px) -->
+          <!-- marker:font-semibold: gør tallet fed -->
+          <!-- md:text-xl: større skriftstørrelse på mellemstore skærme (1.25 rem eller 20px) -->
           <ol
             class="list-inside list-decimal space-y-10 text-lg marker:block marker:text-2xl marker:font-semibold md:text-xl"
           >
@@ -146,26 +327,81 @@
         </div>
       </article>
     </main>
+    <!-- Footer sektion - indeholder kontaktinformation, links og nyhedsbrevstilmelding -->
+    <!-- bg-theme-color-2: lys baggrundsfarve fra tema -->
+    <!-- text-lg: stor skrift som standard -->
+    <!-- md:text-xl: endnu større skrift på mellemstore skærme -->
     <footer class="bg-theme-color-2 text-lg md:text-xl">
+      <!-- Skjult overskrift kun for skærmlæsere – forbedrer tilgængelighed -->
+      <!-- sr-only: skjuler elementet visuelt, men bevarer det tilgængeligt for skærmlæsere -->
+      <!-- Dette hjælper skærmlæsere med at forstå, hvad sektionen handler om -->
       <h2 class="sr-only">Kontaktinformation</h2>
+      <!-- Container for footer-indholdet -->
+      <!-- mx-auto: centrerer containeren horisontalt -->
+      <!-- grid: aktiverer CSS grid layout -->
+      <!-- max-w-6xl: maks bredde (ca. 72rem) -->
+      <!-- gap-10: stor afstand mellem elementer på mobil -->
+      <!-- px-4: padding på siderne -->
+      <!-- py-16: padding top og bund -->
+      <!-- sm:px-6: mere horisontal padding på små skærme -->
+      <!-- md:grid-cols-4: laver 4 kolonner på større skærme -->
+      <!-- md:gap-4: mindre afstand mellem kolonner på større skærme -->
       <div
         class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 md:grid-cols-4 md:gap-4"
       >
+        <!-- Nyhedsbrev-sektion -->
+        <!-- Nyhedsbrev tilmelding - kolonne 1: Kontaktinformation - Kolonne 1–2: Nyhedsbrev-->
+        <!-- Dette afsnit indeholder en overskrift, beskrivelse og et tilmeldingsformular -->
+        <!-- flex: aktiverer flexbox layout -->
+        <!-- flex-col: viser elementerne i en kolonne -->
+        <!-- justify-between: fordeler pladsen mellem elementerne -->
+        <!-- gap-4: afstand mellem elementerne -->
+        <!-- md:col-span-2: gør at dette element spænder over to kolonner på mellemstore skærme og op -->
         <div class="flex flex-col justify-between gap-4 md:col-span-2">
           <div>
+            <!-- Overskrift for nyhedsbrev sektionen -->
+            <!-- mb-4: margin-bottom på 1 rem (16px) -->
+            <!-- text-xl: skriftstørrelse på 1.25 rem (20px) -->
+            <!-- font-semibold: gør teksten fed -->
+            <!-- uppercase: gør teksten store bogstaver -->
+            <!-- md:text-2xl: større skriftstørrelse på mellemstore skærme og op -->
             <h3 class="mb-4 text-xl font-semibold uppercase md:text-2xl">
               Nyhedsbrev
             </h3>
+            <!-- Beskrivelse af nyhedsbrevet -->
+            <!-- first-letter: gør at den første bogstav i afsnittet er større -->
             <p class="first-letter">
               Tilmeld dig vores nyhedsbrev og få en mail, når vi har nye
               opskrifter klar
             </p>
           </div>
 
+          <!-- Formular til tilmelding af nyhedsbrev -->
+          <!-- Dette afsnit indeholder et inputfelt til e-mail og en send-knap -->
+          <!-- <form>: HTML-tag, der bruges til at sende brugerdata – i dette tilfælde en e-mailadresse. Formularen bruges sammen med JavaScript (du har fx email.js til at håndtere den) -->
+          <!-- id=emailForm: formular med et unikt ID, så du kan finde formularen i JavaScript og fx tilføje event listeners, hente input osv - emailForm bruges i JavaScript til at håndtere formularindsendelse -->
+          <!-- items-center: vertikal centrering hvis den senere vises som flex -->
+          <!-- gap-2: lidt luft mellem elementerne -->
           <form id="emailForm" class="items-center gap-2">
+            <!-- Flex container til inputfelt og knap -->
+            <!-- flex: aktiverer flexbox layout for at arrangere input og knap i en række -->
+            <!-- w-[60%]: bredden på hele boksen sættes til 60% -->
+            <!-- items-center: centrerer elementer vertikalt -->
+            <!-- justify-between: placerer input og knap i hver sin ende -->
+            <!-- border-b-1: bundlinje som visuel markering (kræver evt. defineret i Tailwind config) -->
+            <!-- pb-2: padding i bunden – skaber lidt luft til tekst eller kant -->
             <div
               class="flex w-[60%] items-center justify-between border-b-1 pb-2"
             >
+              <!-- Inputfelt til email -->
+              <!-- type=email: Fortæller browseren, at dette inputfelt er til en e-mailadresse - validerer email-format -->
+              <!-- name=email: Bruges når du indsender formularen, så backend eller JavaScript ved, at værdien i feltet hedder email - F.eks. i en FormData-objekt vil det hedde formData.get("email") -->
+              <!-- id=email: Giver feltet et unikt ID, som kan bruges til at knytte det sammen med JavaScript-funktioner - JavaScript (document.getElementById("email")) -->
+              <!-- placeholder: hjælpetekst, der vises i feltet, før brugeren indtaster noget - hjælper brugeren med at forstå, hvad de skal indtaste -->
+              <!-- text-theme-color-1: tekstfarve -->
+              <!-- placeholder:text-theme-color-1: samme farve til placeholder-tekst -->
+              <!-- w-full: feltet fylder hele bredden af containeren -->
+              <!-- outline-none: fjerner standard blå markering ved klik -->
               <input
                 type="email"
                 name="email"
@@ -173,7 +409,15 @@
                 placeholder="E-mail"
                 class="text-theme-color-1 placeholder:text-theme-color-1 w-full outline-none"
               />
+              <!-- Knap med ikon, der indsender formularen/e-mailen -->
+              <!-- id=sendEmail: giver knappen et unikt ID, så du kan tilgå den i JavaScript - eksempel document.getElementById("sendEmail") i din email.js-fil  -->
+              <!-- type=submit: angiver, at denne knap skal indsende formularen, når brugeren klikker på den -->
+              <!-- w-4: meget smal knap (ca. 1rem) - det betyder, at knappen kun fylder lidt plads – perfekt til en lille ikon-knap som denne-->
+              <!-- cursor-pointer: gør, at musen bliver til en pegefinger, når man holder over knappen -->
               <button id="sendEmail" type="submit" class="w-4 cursor-pointer">
+                <!-- SVG-ikon for pil, der indikerer handlingen at sende -->
+                <!-- src: stien til SVG-filen, der indeholder pil-ikonet -->
+                <!-- alt: alternativ tekst, der beskriver ikonet for skærmlæsere -->
                 <img
                   src="../img/svg/chevron_right.svg"
                   alt="Tilmeld nyhedsbrev"
@@ -183,17 +427,26 @@
           </form>
         </div>
 
+        <!-- Kolonne 3: Navigationslinks: Links til andre sider på Surdejsguiden -->
+        <!-- self-end: placerer denne kolonne i bunden (så det flugter med de andre) -->
+        <!-- sr-only: skjult overskrift for skærmlæsere -->
+        <!-- h3: overskrift for navigationslinks -->
         <div class="self-end">
           <h3 class="sr-only">Links</h3>
+          <!-- Navigation - en liste over links til de forskellige sider på hjemmesiden -->
           <nav>
             <ul>
               <li>
+                <!-- hover:text-theme-color-3: Ændrer farven på teksten, når musen holdes over linket ("hover state") -->
+                <!-- href="./opskrifter/surdej.html": gør linket klikbart, og sender brugeren til siden med guide til at lave surdej -->
                 <a
                   class="hover:text-theme-color-3"
                   href="../opskrifter/surdej.html"
                   >Lær at lave surdej</a
                 >
               </li>
+              <!-- href="./opskrifter/index.html": gør linket klikbart, og sender brugeren til undersiden opskrifter - oversigt over opskrifter-->
+              <!-- hover:text-theme-color-3: Ændrer farven på teksten, når musen holdes over linket ("hover state") -->
               <li>
                 <a
                   href="../opskrifter/index.html"
@@ -201,27 +454,34 @@
                   >Opskrifter
                 </a>
               </li>
+              <!-- href="./om-os.html": gør linket klikbart, og sender brugeren til siden om os -->
+              <!-- hover:text-theme-color-3: Ændrer farven på teksten, når musen holdes over linket ("hover state") -->
               <li>
                 <a href="../om-os.html" class="hover:text-theme-color-3"
                   >Om os
                 </a>
               </li>
+              <!-- href="./kontakt.html": gør linket klikbart, og sender brugeren til kontaktsiden -->
+              <!-- hover:text-theme-color-3: Ændrer farven på teksten, når musen holdes over linket ("hover state") -->
               <li>
                 <a href="../kontakt.html" class="hover:text-theme-color-3"
                   >kontakt</a
                 >
               </li>
-              <!-- <li>
-              <a href="#" class="hover:text-theme-color-3">Instagram</a>
-            </li>
-            <li><a href="#" class="hover:text-theme-color-3">Facebook</a></li> -->
             </ul>
           </nav>
         </div>
 
+        <!-- Kolonne 4: Adresse - Kontaktinformation om Surdejsguiden -->
+        <!-- self-end: placerer denne kolonne i bunden (så det flugter med de andre) - elementet justerer sig selv til bunden af det overordnede grid eller flex-layout-->
+        <!-- h3: overskrift for adresse sektionen -->
+        <!-- sr-only: Skjuler teksten visuelt, men gør den stadig tilgængelig for skærmlæsere -->
+        <!-- not-italic: fjerner standard-kursiv/standardstil på address-element <address> i mange browsere) -->
+        <!-- md:text-right: højrejusterer teksten på mellemstore skærme og op - gør teksten højrejusteret fra medium skærmstørrelser (desktop) og op (≥768px). På mindre skærme vil den være venstrestillet som standard -->
         <div class="self-end">
           <h3 class="sr-only">Adresse</h3>
           <address class="not-italic md:text-right">
+            <!-- Adresseoplysninger for Surdejsguiden -->
             <p>Surdejsguiden</p>
             <p>Adresse: Surdejsvej 1</p>
             <p>Postnummer: 1234</p>

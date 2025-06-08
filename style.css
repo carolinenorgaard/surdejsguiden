@@ -1,6 +1,34 @@
-/* Da vi bruger Tailwind CSS via et CDN, behøver vi ikke at nulstille vores standard CSS.
-Det er også derfor, vi ikke kan have vores Tailwind-variabler her i style.css,
- men skal inkludere dem i en <style type="text/tailwindcss"> blok. */
+/* 
+Da vi bruger Tailwind CSS via et CDN, behøver vi ikke at nulstille vores standard CSS (f.eks. med Normalize eller Reset CSS).
+Tailwind håndterer det selv. 
+Det er også derfor, vi ikke kan definere Tailwind-variabler (som farver og fonts) her i style.css,
+men i stedet skal inkludere dem i en <style type="text/tailwindcss"> blok direkte i HTML-filen.
+
+
+Denne style.css bruges til at definere nogle manuelle CSS-stilarter, som ikke direkte dækkes af Tailwind CSS, 
+selvom der primært bruges Tailwind via CDN. 
+Her styres: 
+- typografisk finesse (store forbogstaver),
+- farver på overskrifter,
+- visuelle animationer,
+- og browserens autofill-visning i inputfelter.
+*/
+
+/* SEKTION 1: 
+Denne blok gør det første bogstav stort (typografisk formatering), i udvalgte HTML-elementer. 
+
+- .first-letter:first-letter
+  Gør det første bogstav stort, på udvalgt element.   
+
+- h1 til h6:first-letter
+  Alle overskrifter får det første bogstav stort.
+
+- nav li:first-letter
+ :first-letter fungerer kun på block-elementer, derfor bruges <li> i stedet for <a> i navigation, da <a> er inline som standard.
+
+- address *:first-letter
+  Første bogstav bliver stort i alle elementer inde i <address>.
+*/
 
 .first-letter:first-letter,
 h1:first-letter,
@@ -9,13 +37,18 @@ h3:first-letter,
 h4:first-letter,
 h5:first-letter,
 h6:first-letter,
-/* Target li instead of a tags because :first-letter only affects block elements, not inline elements */
+/* :first-letter fungerer kun på block-elementer, derfor bruges <li> i stedet for <a> i navigation, da <a> er inline som standard */
 nav li:first-letter,
 address *:first-letter {
   text-transform: uppercase;
 }
 
-/* Apply theme color #61412a to all heading elements */
+/* 
+SEKTION 2: 
+Giv overskrifter og header en bestemt farve
+Alle overskrifter og hele header-elementet, får farven #61412a (en mørk brun farve – din "theme color 1").
+*/
+
 h1,
 h2,
 h3,
@@ -26,11 +59,49 @@ header {
   color: #61412a;
 }
 
-/* Animation for the bouncing effect */
+/* SEKTION 3: 
+Denne blok definerer en animation, der får et ikon til at bevæge sig frem og tilbage, når musen er over det.
+
+- .animation:hover > i 
+   Hvis et element har klassen animation, og brugeren holder musen over det (:hover), 
+   vises ikonet (i) og starter animationen "simpleMove" i 1 sekund, der gentages uendeligt.
+    
+-  display: inline-block;  
+   Gør at ikonet kan animeres, da inline-elementer ikke kan have animationer.
+   Sørger for, at <i> vises som inline-blok (så ikonet opfører sig som en boks), så transform virker.
+
+-  animation: simpleMove 1s infinite;
+   Starter animationen simpleMove, der varer ét sekund, og gentages for evigt, så længe brugeren holder musen over.    
+*/
+
 .animation:hover > i {
   display: inline-block;
   animation: simpleMove 1s infinite;
 }
+
+/* SEKTION 4: 
+Denne animation får elementet til at hoppe frem og tilbage, i en glidende bevægelse fra side til side, mod venstre.
+Giver en bevægelse til pile-ikoner, som indikerer "tryk her" eller "scroll videre" - skaber opmærksomhed uden at være forstyrrende.
+
+- @keyframes; 
+  er en CSS-regel, der definerer en animationssekvens, altså hvordan en visuel effekt ændrer sig over tid.
+  (I dette tilfælde definerer @keyframes simpleMove en animation, der flytter et element vandret fra sin normale position, 
+  25% mod venstre, og tilbage igen).
+
+- 0% og 100% 
+  0% er starten af animationen (tidspunkt 0). 
+  100% er slutningen (fuld varighed opbrugt). 
+
+- transform: none 
+  betyder ingen transformation - elementet står i sin oprindelige position (står stille).
+
+- 50% 
+   Halvvejs gennem animationen (50%) - flyttes elementet 25% mod venstre (translateX(-25%)).
+
+- translateX(-25%) 
+  betyder flyt elementet vandret til venstre med 25% af dets bredde.
+  (Dette giver en visuel effekt af at "svinge" til venstre midtvejs).
+*/
 
 @keyframes simpleMove {
   0%,
@@ -44,7 +115,22 @@ header {
   }
 }
 
-/* Remove the default background color of input fields when autofilled */
+/* SEKTION 5: 
+Denne blok fjerner den gule baggrundsfarve, som nogle browsere (især Chrome) anvender for autofyldte input-felter. 
+
+- input:-webkit-autofill 
+  Denne CSS-selektor målretter input-felter, der er blevet autofyldt af browseren (f.eks. når brugeren har gemt loginoplysninger).
+  Det fjerner den gule baggrundsfarve, som nogle browsere (især Chrome) anvender for at indikere, at et felt er autofyldt.
+
+- background-color: transparent !important
+  Gør baggrundsfarven gennemsigtig, så autofill-farven ikke vises.
+  !important sikrer, at denne regel har højere prioritet end andre baggrundsfarver, der måtte være defineret for input-felter.
+
+- transition: background-color 5000s ease-in-out 0s
+  Giver en ekstremt lang overgangstid (5000 sekunder) for baggrundsfarven, hvilket effektivt gør ændringen usynlig for brugeren.
+  Dette sikrer, at baggrundsfarven ikke ændres pludseligt, når brugeren interagerer med inputfeltet.
+*/
+
 input:-webkit-autofill {
   background-color: transparent !important;
   transition: background-color 5000s ease-in-out 0s;
